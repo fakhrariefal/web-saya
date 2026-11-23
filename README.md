@@ -5,21 +5,20 @@ Official B2B Company Profile website for **PT DomestiQ Hub Indonesia** (General 
 ## Cara Deploy Otomatis ke GitHub Pages (Dari File ZIP)
 
 1. **Download & Ekstrak ZIP** project ini ke komputer Anda.
-2. **Buat Repository Baru di GitHub** (misalnya: `domestiqhub-website`, Public atau Private sesuai paket akun).
+2. **Buat Repository Baru di GitHub**:
+   - Gunakan visibilitas **Public** (wajib untuk akun GitHub Free agar fitur GitHub Pages aktif; atau Private jika menggunakan GitHub Pro/Team/Enterprise).
 3. **Upload Semua File ke Repository**:
-   - Pastikan folder tersembunyi **`.github/workflows/deploy.yml`** ikut ter-upload (pada Windows/macOS, aktifkan *Show Hidden Files* saat memilih file di browser, atau gunakan `git push`).
-   - Jika upload lewat web GitHub tanpa folder `.github`, Anda bisa membuka tab **Actions** → pilih *set up a workflow yourself* → salin isi file `.github/workflows/deploy.yml`.
+   - Pastikan folder **`.github/workflows/deploy.yml`** ikut ter-upload ke branch `main` atau `master`.
 4. **Aktifkan GitHub Pages via GitHub Actions**:
-   - Buka repository di GitHub → masuk ke **Settings** → **Pages**.
-   - Pada bagian **Build and deployment → Source**, ubah dari *Deploy from a branch* menjadi **GitHub Actions**.
+   - Workflow sudah dilengkapi `enablement: true` pada `actions/configure-pages@v5` untuk mengaktifkan Pages otomatis.
+   - Jika perlu dicek manual: buka **Settings** → **Pages** → pada **Build and deployment → Source**, pilih **GitHub Actions**.
 5. **Deploy Otomatis**:
-   - Setiap kali ada `push` ke branch `main` atau `master`, tab **Actions** akan otomatis menjalankan proses `npm install` → `npm run lint` → `npm run build` → deploy ke GitHub Pages.
-   - Anda juga dapat memicu deploy manual dari tab **Actions** → **Deploy PT DomestiQ Hub Indonesia to GitHub Pages** → **Run workflow**.
+   - Workflow akan menjalankan `npm install --legacy-peer-deps` → `npm run lint` → `npm run build` → deploy ke GitHub Pages.
 
 ## Menjalankan Secara Lokal
 
 ```bash
-npm install
+npm install --legacy-peer-deps
 npm run dev
 ```
 
