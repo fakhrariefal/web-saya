@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { ExternalLink } from 'lucide-react';
 
 const FOOTER_LINKS = [
   { label: 'Business Solutions', href: '#solusi-bisnis' },
@@ -7,6 +8,8 @@ const FOOTER_LINKS = [
   { label: 'Legal Compliance', href: '#legalitas' },
   { label: 'Request Quote', href: '#penawaran' },
 ];
+
+const INTERNAL_SYSTEM_URL = 'https://gen-lang-client-0621052252.web.app/';
 
 export default function Footer() {
   const [logoError, setLogoError] = useState(false);
@@ -48,9 +51,23 @@ export default function Footer() {
           </nav>
         </div>
 
-        <div className="mt-8 flex flex-col justify-between gap-2 border-t border-slate-100 pt-6 text-xs text-slate-500 sm:flex-row sm:items-center">
+        <div className="mt-8 flex flex-col justify-between gap-3 border-t border-slate-100 pt-6 text-xs text-slate-500 sm:flex-row sm:items-center">
           <p>© 2026 PT DomestiQ Hub Indonesia. All Rights Reserved.</p>
-          <p>General Supplier &amp; Integrated ERP Solutions · Bekasi Regency, West Java</p>
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+            <span>General Supplier &amp; Integrated ERP Solutions · Bekasi Regency, West Java</span>
+            <span aria-hidden="true" className="hidden text-slate-300 sm:inline">
+              ·
+            </span>
+            <a
+              href={INTERNAL_SYSTEM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 whitespace-nowrap shrink-0 font-medium text-[#155799] transition-colors hover:text-[#0B2C4D] hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#155799]"
+            >
+              <span>Internal System</span>
+              <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+            </a>
+          </div>
         </div>
       </div>
     </footer>
